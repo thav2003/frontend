@@ -14,37 +14,31 @@ import storePackageManagementReducer from './reducers/storePackageManagementRedu
 const userPersistConfig = {
   key: 'userState',
   storage,
-  whitelist: ['user'], // danh sách các state của userReducer muốn lưu trữ
 };
 
 const orderMngPersistConfig = {
   key: 'orderMngState',
   storage,
-  whitelist: ['orderMng'], // danh sách các state của orderManagementReducer muốn lưu trữ
 };
 
 const accountMngPersistConfig = {
   key: 'accountMngState',
   storage,
-  whitelist: ['accountMng'], // danh sách các state của accountManagementReducer muốn lưu trữ
 };
 
 const bookingPersistConfig = {
   key: 'bookingState',
   storage,
-  whitelist: ['booking'], // danh sách các state của bookingReducer muốn lưu trữ
 };
 
 const stationPackageMngPersistConfig = {
   key: 'stationPackageMngState',
   storage,
-  whitelist: ['stationPackageMng'], // danh sách các state của stationPackageManagementReducer muốn lưu trữ
 };
 
 const storePackageMngPersistConfig = {
   key: 'storePackageMngState',
   storage,
-  whitelist: ['storePackageMng'], // danh sách các state của storePackageManagementReducer muốn lưu trữ
 };
 
 const userPersistedReducer = persistReducer(userPersistConfig, userReducer);

@@ -1,17 +1,24 @@
 .dropdown {
     position: relative;
     display: inline-block;
+    width: 200px;
+    transform: translateX(-120%);
+    left: 100%;
     .selected-option {
         // background-color: #ffffff;
         border: 1px solid #cccccc;
         border-radius: 4px;
         cursor: pointer;
         padding: 10px;
-     
+        width: fit-content !important;
+        text-align: right;
         user-select: none;
       }
       
       .options {
+        position: relative;
+        transform: translateX(-150%);
+        left: 100%;
         user-select: none;
         background-color: #ffffff;
         color: #000;
