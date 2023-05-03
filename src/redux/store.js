@@ -10,24 +10,63 @@ import bookingReducer from './reducers/bookingReducer';
 import stationPackageManagementReducer from './reducers/stationPackageManagementReducer';
 import storePackageManagementReducer from './reducers/storePackageManagementReducer';
 
-const persistConfig = {
-  key: 'root',
+
+const userPersistConfig = {
+  key: 'userState',
   storage,
+  whitelist: ['user'], // danh sách các state của userReducer muốn lưu trữ
 };
 
+const orderMngPersistConfig = {
+  key: 'orderMngState',
+  storage,
+  whitelist: ['orderMng'], // danh sách các state của orderManagementReducer muốn lưu trữ
+};
+
+const accountMngPersistConfig = {
+  key: 'accountMngState',
+  storage,
+  whitelist: ['accountMng'], // danh sách các state của accountManagementReducer muốn lưu trữ
+};
+
+const bookingPersistConfig = {
+  key: 'bookingState',
+  storage,
+  whitelist: ['booking'], // danh sách các state của bookingReducer muốn lưu trữ
+};
+
+const stationPackageMngPersistConfig = {
+  key: 'stationPackageMngState',
+  storage,
+  whitelist: ['stationPackageMng'], // danh sách các state của stationPackageManagementReducer muốn lưu trữ
+};
+
+const storePackageMngPersistConfig = {
+  key: 'storePackageMngState',
+  storage,
+  whitelist: ['storePackageMng'], // danh sách các state của storePackageManagementReducer muốn lưu trữ
+};
+
+const userPersistedReducer = persistReducer(userPersistConfig, userReducer);
+const orderMngPersistedReducer = persistReducer(orderMngPersistConfig, orderManagementReducer);
+const accountMngPersistedReducer = persistReducer(accountMngPersistConfig, accountManagementReducer);
+const bookingPersistedReducer = persistReducer(bookingPersistConfig, bookingReducer);
+const stationPackageMngPersistedReducer = persistReducer(stationPackageMngPersistConfig, stationPackageManagementReducer);
+const storePackageMngPersistedReducer = persistReducer(storePackageMngPersistConfig, storePackageManagementReducer);
+
 const rootReducer = combineReducers({
-  user: userReducer,
-  orderMng: orderManagementReducer,
-  accountMng: accountManagementReducer,
-  booking: bookingReducer,
-  stationPackageMng: stationPackageManagementReducer,
-  storePackageMng: storePackageManagementReducer,
+  user: userPersistedReducer,
+  orderMng: orderMngPersistedReducer,
+  accountMng: accountMngPersistedReducer,
+  booking: bookingPersistedReducer,
+  stationPackageMng: stationPackageMngPersistedReducer,
+  storePackageMng: storePackageMngPersistedReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
 });
 
 const persistor = persistStore(store);
