@@ -1,0 +1,22 @@
+
+.historyPage {
+    .historyTable {
+        background-color: white;
+    }
+    .filterButtons {
+        display: flex;
+        justify-content: end;
+
+        button {
+            margin: 0 10px;
+            border: 1px solid black;
+            transition: 0.5s all;
+            font-weight: bold;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+
+        }
+    }
+}

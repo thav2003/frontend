@@ -1,0 +1,112 @@
+.accountManagement {
+    .accountManagementTitle {
+        margin-top: 50px;
+        align-items: center;
+
+        p {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: -5px;
+        }
+    }
+
+    .createAccountBtn {
+        display: flex;
+        justify-content: end;
+
+        button {
+            padding: 8px 25px;
+        }
+    }
+
+    .accountManagementTable {
+        border-radius: 15px;
+        background-color: white;
+        min-height: 500px;
+
+        .activeStatus {
+            background-color: #C1FEC3;
+            text-align: center;
+            border-radius: 15px;
+            padding: 5px 0;
+        }
+
+        .bannedStatus {
+            background-color: #D5D6D7;
+            text-align: center;
+            border-radius: 15px;
+            padding: 5px 0;
+        }
+
+        .banBtn {
+            background-color: red;
+            width: 90px;
+        }
+
+        .unbanBtn {
+            background-color: green;
+            width: 90px;
+        }
+
+        .dltBtn {
+            color: red;
+            font-size: 35px;
+            cursor: pointer;
+            transition: 0.25s all;
+            margin-left: 25px;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    
+        button {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            color: #333;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 15px;
+            margin: 0 5px;
+    
+            &:hover {
+                background-color: #f2f2f2;
+            }
+    
+            &:disabled {
+                cursor: not-allowed;
+                opacity: 0.5;
+            }
+        }
+    
+        .pageNumbers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+    
+            li {
+                background-color: #fff;
+                border: 1px solid #ccc;
+                color: #333;
+                cursor: pointer;
+                font-size: 16px;
+                padding: 10px 15px;
+                margin: 0 5px;
+    
+                &.active {
+                    background-color: #333;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

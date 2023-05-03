@@ -1,0 +1,48 @@
+.switchComponent {
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+
+      input[type='checkbox'] {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+  
+      label {
+        cursor: pointer;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        border-radius: 34px;
+        transition: background-color 0.4s;
+  
+        &:before {
+          position: absolute;
+          content: '';
+          height: 20px;
+          width: 20px;
+          left: 2px;
+          bottom: 2px;
+          background-color: white;
+          border-radius: 50%;
+          transition: transform 0.4s;
+        }
+      }
+  
+      input[type='checkbox']:checked + label {
+        background-color: #2196f3;
+  
+        &:before {
+          transform: translateX(26px);
+        }
+      }
+    }
+
+  }

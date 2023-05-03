@@ -1,0 +1,55 @@
+.auth-layout {
+	display: flex;
+
+	.content {
+		height: 100vh;
+		width: 40%;
+		background-color: white;
+		display: flex;
+		align-items: center;
+
+		.children {
+			width: 100%;
+		}
+	}
+
+	.banner {
+		height: 100vh;
+		width: 60%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		background-color: #e5f1f8;
+
+		.logo {
+			width: 800px;
+		}
+	}
+
+	@media (max-width: 1450px) {
+		.content {
+			width: 50%;
+		}
+
+		.banner {
+			width: 50%;
+			.logo {
+				width: 440px;
+			}
+		}
+	}
+
+	@media (max-width: 1000px) {
+		.content {
+			width: 100%;
+		}
+
+		.banner {
+			width: 0;
+			.logo {
+				width: 0;
+			}
+		}
+	}
+}

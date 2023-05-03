@@ -1,0 +1,104 @@
+.packageManagement {
+    .packageManagementTitle {
+        margin-top: 50px;
+    }
+
+    .createPackageBtn {
+        display: flex;
+        justify-content: end;
+
+        button {
+            padding: 8px 25px;
+        }
+    }
+
+    .orderToBePickedModal {
+        input {
+            width: 100%;
+            min-height: 50px;
+            
+        }
+
+        .orderToBePickedList {
+            max-height: 500px;
+            overflow-y: scroll;
+
+            .orderToBePicked {
+                border: 1px solid black;
+                margin: 15px 0;
+                text-align: center;
+                padding: 10px 0;
+                cursor: pointer;
+                border-radius: 15px;
+
+                &:hover {
+                    background-color: green;
+                    color: white;
+                }
+            }
+
+        }
+
+        .isChosen {
+            background-color: green;
+        }
+
+        .notChosen {
+            background-color: white;
+        }
+    }
+
+
+    .packageManagementTable {
+        border-radius: 15px;
+        background-color: white;
+        
+        .progess {
+            background-color: #FFE9C8;
+            margin-top: 15px;
+            text-align: center;
+            padding: 5px;
+            border-radius: 15px;
+        }
+        .deliveringStatus {
+            background-color: #C1FEC3;
+            margin-top: 15px;
+            padding: 5px 15px;
+            text-align: center;
+            border-radius: 15px;
+            white-space: nowrap;
+        }
+
+
+        .deliveryDropdown {
+            background-color: #D9D9D9;
+            border-radius: 15px;
+            margin-top: 15px;
+            padding: 5px 15px;
+            cursor: pointer;
+            max-width: 165px;
+        }
+
+        .editBtn {
+            color: green;
+            font-size: 35px;
+            cursor: pointer;
+            transition: 0.25s all;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+
+        .dltBtn {
+            color: red;
+            font-size: 35px;
+            cursor: pointer;
+            transition: 0.25s all;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+}

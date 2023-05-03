@@ -1,0 +1,23 @@
+.packageManagement {
+    .packageManagementTable {
+        border-radius: 15px;
+        background-color: white;
+        .progess {
+            background-color: #FFE9C8;
+            text-align: center;
+            padding: 5px;
+            border-radius: 15px;
+            max-width: 150px;
+        }
+      
+    }
+    
+    .action-buttons{
+        display: flex;
+        flex-direction: row;
+        gap:10px;
+        .update-button ~.view-button{
+            padding: 10px;
+        }
+    }
+}
