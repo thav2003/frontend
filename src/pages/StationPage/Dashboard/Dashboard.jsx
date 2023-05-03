@@ -8,6 +8,7 @@ export default function Dashboard() {
 	const dispatch = useDispatch();
 	const dashboardData = useSelector((state) => state.stationPackageMng.dashboard)
 	
+	console.log(dashboardData)
 
 	useEffect(()=>{
 		dispatch(getDashboard())
@@ -21,16 +22,16 @@ export default function Dashboard() {
 			<div className='row packagesStatus d-flex flex-row my-4'>
 				<div className='col d-flex mx-2'>
 					<p>Số lượng cửa hàng</p>
-					<p>{dashboardData.totalStore}</p>
+					<p>{dashboardData&&dashboardData.totalStore}</p>
 				</div>
 				<div className='col d-flex mx-2'>
 					<p>Số lượng tài xế đang rảnh</p>
-					<p>{dashboardData.totalShipper}</p>
+					<p>{dashboardData&& dashboardData.totalShipper}</p>
 				</div>
 				<div className='col d-flex mx-2'>
 					<p>Doanh thu trong ngày</p>
 					<p>
-					{dashboardData.totalAmountInDay > 0 ? dashboardData.totalAmountInDay.toLocaleString('vi-VN', {
+					{dashboardData&& dashboardData.totalAmountInDay > 0 ? dashboardData.totalAmountInDay.toLocaleString('vi-VN', {
                         style: 'currency',
                         currency: 'VND'
                         }):0
@@ -41,16 +42,16 @@ export default function Dashboard() {
 			<div className='row packagesStatus d-flex flex-row my-4'>
 				<div className='col d-flex mx-2'>
 					<p>Số lượng  đơn hàng</p>
-					<p>{dashboardData.totalOrder}</p>
+					<p>{dashboardData&& dashboardData.totalOrder}</p>
 				</div>
 				<div className='col d-flex mx-2'>
 					<p>Số lượng đơn hàng trong ngày</p>
 					
-					<p>{dashboardData.totalOrderInDay}</p>
+					<p>{dashboardData && dashboardData.totalOrderInDay}</p>
 				</div>
 				<div className='col d-flex mx-2'>
-					<p>Số lượng kiện hàng</p>
-					<p>{dashboardData.totalPackage}</p>
+					<p>Số lượng kiện hàng đang xử lý</p>
+					<p>{dashboardData&& dashboardData.totalPackage}</p>
 				</div>
 			</div>
 			

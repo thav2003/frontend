@@ -47,7 +47,14 @@ export default function PackageManagementTable({ data,handleConfirmPackage,handl
                     <td>{index+1}</td>
                     <td>{orderdetail.product.name}</td>
                     <td>{orderdetail.weight}</td>
-                    <td>{orderdetail.price}</td>
+                    <td>
+                        {orderdetail.price.toLocaleString('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND'
+                            })
+					    }
+                    </td>
+                   
                     
                 </tr>
             ))}
@@ -89,7 +96,13 @@ export default function PackageManagementTable({ data,handleConfirmPackage,handl
                             <td>{order.id}</td>
                             <td>{order.service}</td>
                             <td>{order.weight}</td>
-                            <td>{order.price}</td>
+                            <td>
+                                {order.price.toLocaleString('vi-VN', {
+                                    style: 'currency',
+                                    currency: 'VND'
+                                    })
+                                }
+                            </td>
                             <td>{STATUS[order.status]}</td>
                             
                             <td>{order.decription}</td>

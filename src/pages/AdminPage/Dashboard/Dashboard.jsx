@@ -35,21 +35,21 @@ export default function Dashboard() {
 			<div className='row packagesStatus d-flex'>
 				<div className='d-flex'>
 					<p>Tổng số đơn hàng</p>
-					<p>{dashboard.totalOrder}</p>
+					<p>{dashboard &&dashboard.totalOrder}</p>
 				</div>
 				<div className='d-flex'>
 					<p>Đơn hàng đang chờ</p>
-					<p>{dashboard.listPendingOrder?.length}</p>
+					<p>{dashboard&&dashboard.listPendingOrder?.length}</p>
 				</div>
 				<div className='d-flex'>
 					<p>Đơn hàng hoàn thành</p>
-					<p>{dashboard.listDoneOrder?.length}</p>
+					<p>{dashboard&&dashboard.listDoneOrder?.length}</p>
 				</div>
 			</div>
 			<div className='chart'>
 				<Chart
 					chartType='PieChart'
-					data={dashboard.dataChart}
+					data={dashboard&& dashboard.dataChart}
 					width={'100%'}
 					height={'95%'}
 					options={options}
