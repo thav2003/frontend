@@ -11,7 +11,7 @@ export default function PackagemanagementContainer() {
 
     useEffect(() => {
         dispatch(getAllPackages());
-    }, [dispatch])
+    })
 
     const handleConfirmPackage = (packageId,status) => {
         const mappingValue = {

@@ -9,9 +9,8 @@ import { faClock, faTruck, faCheckCircle, faUndo, faTimesCircle } from '@fortawe
 export default function OrderManageMentTable({
 	confirmStatus,
 	data,
-	freeShipersData,
-	handleChangeShipper,
 }) {
+	console.log(data)
 	const headerLabels = [
 		'STT',
 		'Khách hàng',
@@ -81,61 +80,6 @@ export default function OrderManageMentTable({
 		}
 	};
 
-	const deliveryValue = (item) => {
-		const finalConfirm=()=>{
-			const data={
-				OrderId:item.id,
-				status:item.status
-			}
-			confirmStatus(data)
-			setShowStatus({id:data.OrderId,status:data.status})
-		}
-		if (item.shipper?.id) {
-			if(item.status==6){
-				return (
-					<div className='pt-3'>
-						<button onClick={finalConfirm}>Xác nhận</button>
-					</div>
-				)
-			}
-			return <div className='pt-3'>{item.shipper.user.fullName}</div>;
-		} else {
-			if(item.status==2 && item.package==null){
-				return <div className='pt-3'>Đơn đang chờ tạo package</div>;
-			}
-			if(item.status==2 && item.package!=null){
-				return <div className='pt-3'>Đơn đang thuộc về 1 package</div>;
-			}
-			if(item.status==3){
-				return <div className='pt-3'>Đang giặt</div>;
-			}
-			if(item.status==4 && item.package.status==4){
-				return <div className='pt-3'>Đã giặt xong</div>;
-			}
-			if(item.status==4 && item.package.status==1){
-				return <div className='pt-3'>Đang trở về station</div>;
-			}
-			if(item.status==6){
-				return <div className='pt-3'>Đơn đã hoàn thành</div>;
-			}
-			return (
-				<select
-					className='deliveryDropdown'
-					value={item.shipper?.id || ''}
-					onChange={(e) => {
-						e.stopPropagation()
-						if (e.target.value) handleChangeShipper(item.id, +e.target.value);
-					}}>
-					<option value=''>Chọn người vận chuyển</option>
-					{freeShipersData.map((shipper) => (
-						<option key={shipper.id} value={shipper.id}>
-							{shipper.user.fullName}
-						</option>
-					))}
-				</select>
-			);
-		}
-	};
 	
     const handleCloseModal = () => {
         setOpenModal(false);
@@ -168,6 +112,14 @@ export default function OrderManageMentTable({
 		const data={
 			OrderId:showStatus.id,
 			status:showStatus.status+1
+		}
+		confirmStatus(data)
+		setShowStatus({id:data.OrderId,status:data.status})
+	}
+	const handleConfirmShipper=(item)=>{
+		const data={
+			OrderId:item.id,
+			status:0
 		}
 		confirmStatus(data)
 		setShowStatus({id:data.OrderId,status:data.status})
@@ -248,7 +200,18 @@ export default function OrderManageMentTable({
 											<p>{moment(item.createdAt).format('DD/MM/YYYY')}</p>
 										</td>
 										<td>{classifyStatus(STATUS, item)}</td>
-										<td onClick={(e) => e.stopPropagation()}>{deliveryValue(item)}</td>
+										{
+											item.shipper?.id ? (
+												<td onClick={(e) => e.stopPropagation()}><div className='pt-3'>{item.shipper.user.fullName}</div></td>
+												
+											) : (
+												item.status===0 ? <td onClick={(e) => e.stopPropagation()}><button onClick={()=>handleConfirmShipper(item)}>Xác nhận</button></td>
+												: (item.status ===2 && !item.packge) ? <td onClick={(e) => e.stopPropagation()}>Trong station</td>
+												: <td onClick={(e) => e.stopPropagation()}>chưa biết</td>
+											)
+												
+										}
+										
 									</tr>
 								);
 							}

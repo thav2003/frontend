@@ -13,29 +13,14 @@ export default function OrderManagementContainer() {
 	const orderMngData = useSelector(
 		(state) => state.orderMng.orderManagementDetails
 	);
-	const freeShippersList = useSelector(
-		(state) => state.orderMng.freeShippersList
-	);
 
 	useEffect(() => {
 		dispatch(getOrderMng());
-		dispatch(getFreeShipper());
-	}, [dispatch]);
+	});
 
-	const handleChangeShipper = async (orderId, shipperId) => {
-		const mappingValue = {
-			OrderId: orderId,
-			shipperId: shipperId,
-		};
-		dispatch(changeShipper(mappingValue)).then(() => {
-			dispatch(getOrderMng());
-			dispatch(getFreeShipper());
-		});
-	};
 	const handleConfirmStatus=(data)=>{
 		dispatch(updateOrderStatus(data)).then(()=>{
 			dispatch(getOrderMng());
-			dispatch(getFreeShipper());
 		})
 	}
 
@@ -43,8 +28,6 @@ export default function OrderManagementContainer() {
 		<div>
 			<OrderManagement
 				data={orderMngData}
-				freeShipersData={freeShippersList}
-				handleChangeShipper={handleChangeShipper}
 				confirmStatus={handleConfirmStatus}
 			/>
 		</div>

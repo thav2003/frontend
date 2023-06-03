@@ -26,16 +26,16 @@ export const getAllPackagesByStatusId = createAsyncThunk('/package-by-status-id'
     return response?.data?.data
 })
 
-export const createPackage = createAsyncThunk('/create-package', async (data) => {
-    try {
-        await createPackageAPI(data)
-        toast.success('Tạo kiện hàng thành công !!', {
-            position: toast.POSITION.BOTTOM_RIGHT,
-        })
-    } catch (e) {
-        console.log(e);
-    }
-})
+// export const createPackage = createAsyncThunk('/create-package', async (data) => {
+//     try {
+//         await createPackageAPI(data)
+//         toast.success('Tạo kiện hàng thành công !!', {
+//             position: toast.POSITION.BOTTOM_RIGHT,
+//         })
+//     } catch (e) {
+//         console.log(e);
+//     }
+// })
 
 export const assignShipper = createAsyncThunk('/assign-shipper', async (data) => {
     try {

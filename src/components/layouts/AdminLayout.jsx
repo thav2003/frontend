@@ -36,10 +36,10 @@ const MENU_ITEM = {
 			LABEL: 'QUẢN LÝ TÀI KHOẢN',
 			URL: '/account-management',
 		},
-		{
-			LABEL: 'QUẢN LÝ DỊCH VỤ',
-			URL: '/services-management',
-		},
+		// {
+		// 	LABEL: 'QUẢN LÝ DỊCH VỤ',
+		// 	URL: '/services-management',
+		// },
 	],
 	Store:[
 		{
@@ -97,8 +97,7 @@ export default function AdminLayout({ children }) {
 		updateStoreAPI(payload).then(()=>setClose(!close))
 	}
 	useEffect(()=>{
-		
-		
+		if(localStorage.getItem("ROLE")=="Store"){
 			getStoreByIdAPI().then(res=>{
 				const resData=res.data.data
 				
@@ -106,9 +105,10 @@ export default function AdminLayout({ children }) {
 				setClose(resData.isDeleted == 0 ? true : false)
 				setId(resData.id);
 			})
-		
-		
-		
+		}
+		if(localStorage.getItem("ROLE")=="Manager"){
+
+		}
 	},[localStorage.getItem("TOKEN")])
 	return (
 		<section className='admin-layout'>

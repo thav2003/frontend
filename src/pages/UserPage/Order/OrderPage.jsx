@@ -1,6 +1,6 @@
 import React, { useState ,useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Popup from '../../../components/Popup'
+import moment from 'moment';
 import { useFormik } from 'formik';
 // import {submitBookingAPI} from '../../../api/apis'
 import './assets/OrderPage.scss'
@@ -86,9 +86,10 @@ const OrderPage = ({accountInfors,products,locations}) => {
             data: items,
             weight:totalWeight,
             location:data.location,
-            description:data.note
-
+            description:data.note,
+            receiveDay:moment(data.pickupDate + " 12:00:00").toISOString()
         }
+        // console.log(payload)
         dispatch(submitBooking(payload, navigate('/')))
         // const res=await submitBookingAPI(payload);
         // setShowPopup(true)

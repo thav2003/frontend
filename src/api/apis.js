@@ -32,6 +32,7 @@ const APIs_URL = {
 	CREATE_PACKAGE: `Package`,
 	UPDATE_PACKAGE: (filterParam) =>`Package?filter=${filterParam}`, 
 	PACKAGE_BY_STATUS: (statusId) => `Package?status=${statusId}`,
+	ASSIGN_PACKAGE:'Package/auto-assign',
 
 	// Shipper
 	SHIPPER: 'Shipper',
@@ -50,6 +51,8 @@ const APIs_URL = {
 	STATION_DASHBOARD:'Station/station-dashboard',
 	STATION_LOCATION:'Station/location'
 };
+
+
 
 export const updateStoreAPI = async (data)=>{
 	const formData = new FormData();
@@ -190,6 +193,7 @@ export const changeShipperAPI = async (data) => {
 };
 
 
+
 // Login & Register
 export const loginAPI = async (data) => {
 	return await axiosClient.postWithoutToken(APIs_URL.LOGIN, data);
@@ -271,9 +275,11 @@ export const getAllPackagesByStatusIdAPI = async (statusId) => {
 export const getAllOrdersByStatusIdAPI = async (statusId) => {
 	return await axiosClient.get(APIs_URL.ORDER_BY_STATUS(statusId))
 }
-
-export const createPackageAPI = async (data) => {
-	return await axiosClient.post(APIs_URL.CREATE_PACKAGE, data)
+export const autoAssignPackageAPI = async () => {
+	return await axiosClient.post(APIs_URL.ASSIGN_PACKAGE)
+}
+export const createPackageAPI = async () => {
+	return await axiosClient.post(APIs_URL.CREATE_PACKAGE)
 }
 
 export const assignShipperAPI = async (data, type) => {

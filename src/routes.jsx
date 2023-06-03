@@ -128,10 +128,10 @@ const routes = [
 		path: '/verify/:id',
 		element: VerificationSuccess
 	},
-	{
-		path: '/services-management',
-		element: withAuth(ServiceManagementWrap,[ROLE_VALUES.ADMIN])
-	},
+	// {
+	// 	path: '/services-management',
+	// 	element: withAuth(ServiceManagementWrap,[ROLE_VALUES.ADMIN])
+	// },
 	{
 		path: '/profile',
 		element: withAuth(ProfilePageWrap,[ROLE_VALUES.CUSTOMER])

@@ -1,7 +1,7 @@
 import React from 'react'
 import PackageManagementTable from './PackageManagementTable'
 
-export default function PackageManagement({ stores,createPackage,data, allOrdersStatus2, freeShippersList, handleAssignShipper, handleConfirmPackage,handleAssignStore }) {
+export default function PackageManagement({ data, handleConfirmPackage }) {
     return (
         <div className='container-fluid packageManagement'>
             <div className='packageManagementTitle'>
@@ -10,13 +10,7 @@ export default function PackageManagement({ stores,createPackage,data, allOrders
 
             <PackageManagementTable
                 data={data}
-                allOrdersStatus2={allOrdersStatus2}
-                freeShippersList={freeShippersList}
-                handleAssignShipper={handleAssignShipper}
                 handleConfirmPackage={handleConfirmPackage}
-                handleAssignStore={handleAssignStore}
-                createPackage={createPackage}
-                stores={stores}
             />
         </div>
     )
