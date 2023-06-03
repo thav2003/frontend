@@ -13,7 +13,7 @@ export default function PackagemanagementContainer() {
       const interval = setInterval(() => {
         dispatch(getAllPackages());
 
-      }, 2000);
+      }, 1000);
       
       return () => {
         clearInterval(interval);

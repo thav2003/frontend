@@ -17,7 +17,7 @@ export default function OrderManagementContainer() {
 	useEffect(() => {
 		const interval = setInterval(() => {
 		  dispatch(getOrderMng());
-		}, 2000);
+		}, 1000);
 	  
 		return () => {
 		  clearInterval(interval);
