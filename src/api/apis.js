@@ -13,6 +13,7 @@ const APIs_URL = {
 	ORDER_CHANGE_SHIPPER: `Order?filter=shipperid`,
 	UPDATE_ORDER: (filterParam) =>`Order?filter=${filterParam}`, 
 	ORDER_BY_STATUS: (statusId) => `Order?status=${statusId}`,
+	ASSIGN_ORDER:'Order/auto-assign',
 
 	// Users
 	USERS_UPDATE:(filterParam)=>`Users?filter=${filterParam}`,
@@ -274,6 +275,9 @@ export const getAllPackagesByStatusIdAPI = async (statusId) => {
 
 export const getAllOrdersByStatusIdAPI = async (statusId) => {
 	return await axiosClient.get(APIs_URL.ORDER_BY_STATUS(statusId))
+}
+export const autoAssignOrderAPI = async () => {
+	return await axiosClient.post(APIs_URL.ASSIGN_ORDER)
 }
 export const autoAssignPackageAPI = async () => {
 	return await axiosClient.post(APIs_URL.ASSIGN_PACKAGE)
