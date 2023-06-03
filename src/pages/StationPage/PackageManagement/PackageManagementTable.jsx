@@ -9,7 +9,7 @@ import { STATUS } from '../../../utils/Constant';
 
 export default function PackageManagementTable({ data, handleConfirmPackage }) {
     const headerLabels = ['ID', 'Chi tiết kiện hàng', 'Cửa hàng', 'Thời gian', 'Trạng thái', 'Người giao hàng', 'Khác']
-
+    console.log(data)
     return (
         <div>
             
@@ -26,7 +26,7 @@ export default function PackageManagementTable({ data, handleConfirmPackage }) {
                 </thead>
                 <tbody>
                     {
-                        data.map(item => {
+                        data && data.map(item => {
                           
                             return (
                                 <tr key={item.id}>

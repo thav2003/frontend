@@ -9,13 +9,16 @@ export default function PackagemanagementContainer() {
     const dispatch = useDispatch();
     const allPackagesDetails = useSelector((state) => state.storePackageMng.allPackages)
 
-
     useEffect(() => {
-
+      const interval = setInterval(() => {
         dispatch(getAllPackages());
 
-    
-    }, [dispatch]);
+      }, 2000);
+      
+      return () => {
+        clearInterval(interval);
+      };
+      }, []);
 
     const handleConfirmPackage = (packageId,status) => {
         const mappingValue = {

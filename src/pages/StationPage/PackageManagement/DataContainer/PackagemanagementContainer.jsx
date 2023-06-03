@@ -10,15 +10,17 @@ export default function PackagemanagementContainer() {
     const dispatch = useDispatch();
     const allPackagesDetails = useSelector((state) => state.stationPackageMng.allPackages)
 
-
-
     useEffect(() => {
-  
+      const interval = setInterval(() => {
         dispatch(getAllPackages());
         createPackageAPI();
         autoAssignPackageAPI();
+      }, 2000);
       
-    }, [dispatch]);
+      return () => {
+        clearInterval(interval);
+      };
+      }, []);
 
 
     const handleConfirmPackage = (packageId) => {
