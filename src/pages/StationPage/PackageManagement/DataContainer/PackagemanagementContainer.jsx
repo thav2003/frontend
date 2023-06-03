@@ -13,7 +13,7 @@ export default function PackagemanagementContainer() {
     useEffect(() => {
       const interval = setInterval(() => {
         dispatch(getAllPackages());
-      }, 1000);
+      }, 5000);
       
       return () => {
         clearInterval(interval);
