@@ -11,21 +11,14 @@ export default function PackagemanagementContainer() {
     const allPackagesDetails = useSelector((state) => state.stationPackageMng.allPackages)
 
 
+
     useEffect(() => {
-       
-        
-    })
-    useEffect(() => {
-      const interval = setInterval(() => {
+  
         dispatch(getAllPackages());
         createPackageAPI();
         autoAssignPackageAPI();
-      }, 1000);
       
-      return () => {
-        clearInterval(interval);
-      };
-    }, []);
+    }, [dispatch]);
 
 
     const handleConfirmPackage = (packageId) => {
