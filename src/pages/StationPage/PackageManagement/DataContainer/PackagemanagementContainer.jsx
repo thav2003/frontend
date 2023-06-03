@@ -12,14 +12,21 @@ export default function PackagemanagementContainer() {
 
 
     useEffect(() => {
-        dispatch(getAllPackages());
+       
         
     })
+    useEffect(() => {
+      const interval = setInterval(() => {
+        dispatch(getAllPackages());
+        createPackageAPI();
+        autoAssignPackageAPI();
+      }, 1000);
+      
+      return () => {
+        clearInterval(interval);
+      };
+    }, []);
 
-    useEffect(()=>{
-      createPackageAPI();
-      autoAssignPackageAPI();
-    })
 
     const handleConfirmPackage = (packageId) => {
         const mappingValue = {

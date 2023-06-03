@@ -15,8 +15,14 @@ export default function OrderManagementContainer() {
 	);
 
 	useEffect(() => {
-		dispatch(getOrderMng());
-	});
+		const interval = setInterval(() => {
+		  dispatch(getOrderMng());
+		}, 1000);
+	  
+		return () => {
+		  clearInterval(interval);
+		};
+	  }, []);
 
 	const handleConfirmStatus=(data)=>{
 		dispatch(updateOrderStatus(data)).then(()=>{
